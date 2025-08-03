@@ -1,0 +1,359 @@
+{% extends 'freight/base.html' %}
+{% load i18n %}
+{% load humanize %}
+{% load static %}
+{% load freight_filters %}
+
+{% block details %}
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="nav-item">
+            <a class="nav-link active" href="#routes" aria-controls="routes" role="tab" data-bs-toggle="tab">
+                {% translate "Routes" %}
+            </a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a class="nav-link" href="#pilots" aria-controls="pilots" role="tab" data-bs-toggle="tab">
+                {% translate "Pilots" %}
+            </a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a class="nav-link"
+                href="#pilot_corporations"
+                aria-controls="pilot_corporations"
+                role="tab"
+                data-bs-toggle="tab">
+                {% translate "Pilot Corporations" %}
+            </a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a class="nav-link" href="#customers" aria-controls="customers" role="tab" data-bs-toggle="tab">
+                {% translate "Customers" %}
+            </a>
+        </li>
+    </ul>
+
+    <!-- Tabs -->
+    <div class="card card-default">
+        <div class="card-body">
+            <div class="tab-content">
+                <!-- Route -->
+                <div role="tabcard" class="tab-pane active" id="routes">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-width-fix" id="tab_routes">
+                            <thead>
+                                <tr>
+                                    <th>{% translate "Name" %}</th>
+                                    <th>{% translate "Contracts" %}</th>
+                                    <th>{% translate "Rewards" %}</th>
+                                    <th>{% translate "Collaterals" %}</th>
+                                    <th>{% translate "Volume" %}</th>
+                                    <th>{% translate "Pilots" %}</th>
+                                    <th>{% translate "Customers" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr class="success">
+                                    <th>{% translate "Totals" %}</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pilots -->
+                <div role="tabcard" class="tab-pane" id="pilots">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-width-fix" id="tab_pilots">
+                            <thead>
+                                <tr>
+                                    <th>{% translate "Name" %}</th>
+                                    <th>{% translate "Corporation" %}</th>
+                                    <th>{% translate "Contracts" %}</th>
+                                    <th>{% translate "Rewards" %}</th>
+                                    <th>{% translate "Collaterals" %}</th>
+                                    <th>{% translate "Volume" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr class="success">
+                                    <th>{% translate "Totals" %}</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pilot Corporations -->
+                <div role="tabcard" class="tab-pane" id="pilot_corporations">
+                    <div class="table-responsive">
+                        <table
+                            class="table table-striped table-width-fix"
+                            id="tab_pilot_corporations">
+                            <thead>
+                                <tr>
+                                    <th>{% translate "Name" %}</th>
+                                    <th>{% translate "Alliance" %}</th>
+                                    <th>{% translate "Contracts" %}</th>
+                                    <th>{% translate "Rewards" %}</th>
+                                    <th>{% translate "Collaterals" %}</th>
+                                    <th>{% translate "Volume" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr class="success">
+                                    <th>{% translate "Totals" %}</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pilot Corporations -->
+                <div role="tabcard" class="tab-pane" id="customers">
+                    <div class="table-responsive">
+                        <table
+                            class="table table-striped table-width-fix"
+                            id="tab_customers">
+                            <thead>
+                                <tr>
+                                    <th>{% translate "Name" %}</th>
+                                    <th>{% translate "Corporation" %}</th>
+                                    <th>{% translate "Contracts" %}</th>
+                                    <th>{% translate "Rewards" %}</th>
+                                    <th>{% translate "Collaterals" %}</th>
+                                    <th>{% translate "Volume" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr class="success">
+                                    <th>{% translate "Totals" %}</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-muted">
+        {% blocktranslate %}
+            Statistics calculated for all contracts finished withn the last {{ max_days }} days
+        {% endblocktranslate %}
+    </p>
+
+{% endblock %}
+
+{% block extra_javascript %}
+    {% include 'bundles/datatables-js.html' %}
+    {% include "freight/partials/global_js.html" %}
+
+    <script type="application/javascript">
+        // Remove the formatting to get integer data for summation
+        function intVal(i)
+        {
+            return typeof i === 'string'
+                ? i.replace(/[\$,]/g, '')*1
+                : typeof i === 'number'
+                    ? i
+                    : 0;
+        };
+
+        $(document).ready(function(){
+            $('#tab_routes').DataTable({
+                ajax: {
+                    url: '{% url 'freight:statistics_routes_data' %}',
+                    dataSrc: 'data',
+                    cache: false
+                },
+                columns: [
+                    { data: 'name' },
+                    {
+                        data: 'contracts',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                    {
+                        data: 'rewards',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'collaterals',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'volume',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                    {
+                        data: 'pilots',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                    {
+                        data: 'customers',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                ],
+                order: [ [ 1, "desc" ], [ 2, "desc" ] ],
+                footerCallback: function ( row, data, start, end, display ) {
+                    const api = this.api();
+                    dataTableFooterSumColumn(api, 1);
+                    dataTableFooterSumColumn(api, 2, "isk");
+                    dataTableFooterSumColumn(api, 3, "isk");
+                    dataTableFooterSumColumn(api, 4);
+                    dataTableFooterSumColumn(api, 5);
+                    dataTableFooterSumColumn(api, 6);
+                }
+            });
+
+            $('#tab_pilots').DataTable({
+                ajax: {
+                    url: '{% url 'freight:statistics_pilots_data' %}',
+                    dataSrc: 'data',
+                    cache: false
+                },
+
+                columns: [
+                    { data: 'name' },
+                    { data: 'corporation' },
+                    {
+                        data: 'contracts',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                    {
+                        data: 'rewards',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'collaterals',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'volume',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                ],
+                order: [ [ 2, "desc" ], [ 3, "desc" ] ],
+                footerCallback: function ( row, data, start, end, display ) {
+                    const api = this.api();
+                    dataTableFooterSumColumn(api, 2);
+                    dataTableFooterSumColumn(api, 3, "isk");
+                    dataTableFooterSumColumn(api, 4, "isk");
+                    dataTableFooterSumColumn(api, 5);
+                }
+            });
+
+            $('#tab_pilot_corporations').DataTable({
+                ajax: {
+                    url: '{% url 'freight:statistics_pilot_corporations_data' %}',
+                    dataSrc: 'data',
+                    cache: false
+                },
+
+                columns: [
+                    { data: 'name' },
+                    { data: 'alliance' },
+                    {
+                        data: 'contracts',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                    {
+                        data: 'rewards',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'collaterals',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'volume',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                ],
+                order: [ [ 2, "desc" ], [ 3, "desc" ] ],
+                footerCallback: function ( row, data, start, end, display ){
+                    const api = this.api();
+                    dataTableFooterSumColumn(api, 2);
+                    dataTableFooterSumColumn(api, 3, "isk");
+                    dataTableFooterSumColumn(api, 4, "isk");
+                    dataTableFooterSumColumn(api, 5);
+                }
+            });
+
+            $('#tab_customers').DataTable({
+                ajax: {
+                    url: '{% url 'freight:statistics_customer_data' %}',
+                    dataSrc: 'data',
+                    cache: false
+                },
+
+                columns: [
+                    { data: 'name' },
+                    { data: 'corporation' },
+                    {
+                        data: 'contracts',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                    {
+                        data: 'rewards',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'collaterals',
+                        render: $.fn.dataTable.render.formatisk()
+                    },
+                    {
+                        data: 'volume',
+                        render: $.fn.dataTable.render.number( ',', '.', 0 )
+                    },
+                ],
+                order: [ [ 2, "desc" ], [ 3, "desc" ] ],
+                footerCallback: function ( row, data, start, end, display ) {
+                    const api = this.api();
+                    dataTableFooterSumColumn(api, 2);
+                    dataTableFooterSumColumn(api, 3, "isk");
+                    dataTableFooterSumColumn(api, 4, "isk");
+                    dataTableFooterSumColumn(api, 5);
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block extra_css %}
+    {% include 'bundles/datatables-css.html' %}
+
+    <link href="{% static 'freight/css/kalkoken.css' %}" type="text/css" rel="stylesheet" />
+    <link
+        href="{% static 'freight/css/statistics.css' %}"
+        type="text/css"
+        rel="stylesheet"
+    />
+{% endblock %}
+
+{% block extra_script %}{% endblock %}

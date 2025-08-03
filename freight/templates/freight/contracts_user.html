@@ -1,0 +1,52 @@
+{% extends 'freight/base.html' %}
+{% load i18n %}
+{% load humanize %}
+{% load static %}
+
+{% block details %}
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" href="#active_contracts" aria-controls="active_contracts" role="tab" data-bs-toggle="tab">
+                {{ user_name }}
+            </a>
+        </li>
+    </ul>
+
+    <div class="card card-default card-tabs">
+        <div class="card-body tab-content">
+            <div role="tabpanel" class="tab-pane show active" id="active_contracts">
+                {% include "freight/partials/contract_table.html" with tab_name="tab_user_contracts" %}
+            </div>
+        </div>
+    </div>
+
+    {% include "freight/partials/contracts_legend.html" %}
+
+
+{% endblock %}
+
+{% block extra_javascript %}
+
+    {% include "freight/partials/contracts_js_includes.html" %}
+    {% include "freight/partials/global_js.html" %}
+
+    <script type="application/javascript">
+        $(document).ready(function(){
+            createContractsDataTable(
+                "tab_user_contracts", "{% url 'freight:contract_list_data' 'user' %}"
+            )
+        });
+    </script>
+{% endblock %}
+
+{% block extra_css %}
+    {% include 'bundles/datatables-css.html' %}
+
+    <link href="{% static 'freight/css/kalkoken.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'freight/css/contracts.css' %}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block extra_script %}
+{% endblock %}

@@ -1,0 +1,272 @@
+{% extends 'freight/base.html' %}
+{% load i18n %}
+{% load humanize %}
+{% load bootstrap %}
+{% load static %}
+{% load freight_filters %}
+
+{% block details %}
+    
+<form id="form_calculator" class="form" action="{% url 'freight:calculator' %}" method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{% translate "Calculator" %}</h3>
+                </div>
+                <div class="card-body">
+                    {% if has_pricing %}
+                        {{ form|bootstrap }}
+                        <br>
+                        <p><strong>{% translate "Reward" %}</strong></p>
+                        <h2 id="text_price">
+                            <span id="text_price_2">{{ price|formatnumber:"0"|default_if_none:"-" }}
+                                &nbsp;{% translate "ISK" %}
+                            </span>
+                            <span class="copy_to_clipboard" data-clipboard-text="{{ price }}">
+                                &nbsp;&nbsp;<i class="far fa-copy"></i></span>
+                            </span>
+                        </h2>
+                        <button class="btn btn-success btn-lg" type="submit">
+                            {% translate "Click To Calculate Reward!" %}
+                        </button>
+                    {% else %}
+                        <p class="text-warning">
+                            {% translate "Please define a pricing/route!" %}
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card my-3">
+                <div class="card-header">
+                    <h3 class="card-title">{% translate "Pricing details" %}</h3>
+                </div>
+                <div class="card-body" style="min-height: 100px;">
+                    {% if pricing %}
+                        {% if pricing.is_bidirectional %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "From / To:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.start_location }}</dd>
+                            </div>
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "From / To:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.end_location }}</dd>
+                            </div>
+                        {% else %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "From:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.start_location }}</dd>
+                            </div>
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "To:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.end_location }}</dd>
+                            </div>
+                        {% endif %}
+
+                        <div class="row mb-2">
+                            <dt class="col-sm-4">{% translate "Both directions:" %}</dt>
+                            <dd class="col-sm-8">{{ pricing.is_bidirectional|yesno }}</dd>
+                        </div>
+
+                        {% if pricing.price_min != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Minimum price:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.price_min|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.price_base != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">
+                                    {% if pricing.is_fix_price %}{% translate "Fix price:" %}{% else %}{% translate "Base price:" %}{% endif %}
+                                </dt>
+                                <dd class="col-sm-8">{{ pricing.price_base|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing_price_per_volume_eff != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Price add-on per m3:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing_price_per_volume_eff|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.price_per_collateral_percent != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Price add-on collateral:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.price_per_collateral_percent }} %</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.volume_min != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Min Volume:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.volume_min|formatnumber:"0"|default_if_none:"-" }}&nbsp;{% translate "m3" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.volume_max != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Max Volume:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.volume_max|formatnumber:"0"|default_if_none:"-" }}&nbsp;{% translate "m3" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.collateral_min != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Min. Collateral:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.collateral_min|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.collateral_max != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Max. Collateral:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.collateral_max|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.details %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Additional Instructions:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.details|linebreaks }}</dd>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <p class="text-warning">{% translate "Please define a pricing/route!" %}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{% translate "Your contract" %}</h3>
+                </div>
+                <div class="card-body" style="min-height: 100px;">
+                    {% if price != None %}
+                        <div class="row mb-2">
+                            <dt class="col-sm-4">{% translate "Contract Type:" %}</dt>
+                            <dd class="col-sm-8">{% translate "Courier" %}</dd>
+                        </div>
+
+                        <div class="row mb-2">
+                            <dt class="col-sm-4">{% translate "Availability:" %}</dt>
+                            <dd class="col-sm-8">{{ availability }}</dd>
+                        </div>
+
+                        <div class="row mb-2">
+                            <dt class="col-sm-4">{% translate "Location:" %}</dt>
+                            <dd class="col-sm-8">
+                                {{ pricing.start_location }}
+                                <span class="copy_to_clipboard" data-clipboard-text="{{ pricing.start_location }}">
+                                    &nbsp;&nbsp;<i class="far fa-copy"></i></span>
+                            </dd>
+                        </div>
+
+                        <div class="row mb-2">
+                            <dt class="col-sm-4">{% translate "Ship To:" %}</dt>
+                            <dd class="col-sm-8">
+                                {{ pricing.end_location }}
+                                <span class="copy_to_clipboard" data-clipboard-text="{{ pricing.end_location }}">
+                                    &nbsp;&nbsp;<i class="far fa-copy"></i></span>
+                            </dd>
+                        </div>
+
+                        <div class="row mb-2">
+                            <dt class="col-sm-4">{% translate "Reward:" %}</dt>
+                            <dd class="col-sm-8">
+                                {{ price|formatnumber:"0"|default_if_none:"???" }}&nbsp;{% translate "ISK" %}
+                                <span class="copy_to_clipboard" data-clipboard-text="{{ price }}">
+                                    &nbsp;&nbsp;<i class="far fa-copy"></i></span>
+                            </dd>
+                        </div>
+
+                        <div class="row mb-2">
+                            <dt class="col-sm-4">{% translate "Collateral:" %}</dt>
+                            <dd class="col-sm-8">
+                                {{ collateral|formatnumber:"0"|default_if_none:"???" }}&nbsp;{% translate "ISK" %}
+                                <span class="copy_to_clipboard" data-clipboard-text="{{ collateral }}">
+                                    &nbsp;&nbsp;<i class="far fa-copy"></i></span>
+                            </dd>
+                        </div>
+
+                        {% if pricing.days_to_expire %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Expiration:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.days_to_expire }} {% translate "days" %} ({{ expires_on|date:'Y-m-d' }})</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.days_to_complete %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Days to complete:" %}</dt>
+                                <dd class="col-sm-8">
+                                    {{ pricing.days_to_complete|default_if_none:"-" }}
+                                    <span class="copy_to_clipboard" data-clipboard-text="{{ pricing.days_to_complete }}">
+                                        &nbsp;&nbsp;<i class="far fa-copy"></i></span>
+                                </dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.requires_volume %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Volume:" %}</dt>
+                                <dd class="col-sm-8">{{ volume|formatnumber:"0"|default_if_none:"???" }}&nbsp;{% translate "m3" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        <hr>
+                        {% translate "Note that this route is bidirectional, so Location and Destination can be switched." %}
+                    {% else %}
+                        <p class="text-muted">{% translate "No price calculated yet" %}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}
+
+{% block extra_javascript %}
+    {% include 'bundles/clipboard-js.html' %}
+
+    <script type="application/javascript">
+        const clipboard = new ClipboardJS('.copy_to_clipboard');
+
+        clipboard.on('success', function (e) {
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function (e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
+
+        $(document).ready(function(){
+            /* redirecting to updated calculator view with chosen pricing */
+            $("#id_pricing").change(function(){
+                let value = $("#id_pricing").val();
+                if (value == null) {
+                    value = 0;
+                }
+                window.location.replace(
+                    "{% url 'freight:calculator' 0 %}".replace("0", value)
+                );
+            });
+
+        });
+    </script>
+{% endblock %}
+
+{% block extra_css %}
+    <link href="{% static 'freight/css/kalkoken.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'freight/css/calculator.css' %}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block extra_script %}
+{% endblock %}

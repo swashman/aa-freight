@@ -1,0 +1,12 @@
+{% extends 'allianceauth/base-bs5.html' %}
+{% load i18n %}
+{% block page_title %}{{ app_title }}{% endblock %}
+{% block header_nav_brand %}
+    {{ app_title }}
+{% endblock header_nav_brand %}
+{% block header_nav_collapse_left %}
+    {% include 'freight/partials/menu.html' %}
+{% endblock %}
+{% block content %}
+    {% block details %}{% endblock %}
+{% endblock %}

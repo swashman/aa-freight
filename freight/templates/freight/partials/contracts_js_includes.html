@@ -1,0 +1,8 @@
+{% load static %}
+
+{% include 'bundles/moment-js.html' with locale=True %}
+{% include "bundles/datatables-js-bs5.html" %}
+{% include 'bundles/filterdropdown-js.html' %}
+
+<script type="application/javascript" src="{% static 'freight/vendor/datatables/datetime.js' %}"></script>
+<script type="application/javascript" src="{% static 'freight/js/contracts.js' %}"></script>

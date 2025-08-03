@@ -1,0 +1,5 @@
+.dl-horizontal dt { text-align: left; }
+
+.copy_to_clipboard:hover {
+    cursor: pointer;
+}

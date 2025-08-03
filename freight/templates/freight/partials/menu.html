@@ -1,0 +1,54 @@
+{% load static %}
+{% load i18n %}
+{% load navactive %}
+
+{% if perms.freight.use_calculator %}
+    <li class="nav-item">
+        <a href="{% url 'freight:calculator' %}" class="nav-link {% navactive request 'freight:calculator' %}">
+            {% translate "Reward Calculator" %}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="{% url 'freight:contract_list_user' %}" class="nav-link {% navactive request 'freight:contract_list_user' %}">
+            {% translate "My Contract" %}s&nbsp;
+            {% if pending_user_count > 0 %}
+                <span class="badge bg-secondary">{{ pending_user_count }}</span>
+            {% endif %}
+        </a>
+    </li>
+{% endif %}
+
+{% if perms.freight.view_contracts %}
+    <li class="nav-item">
+        <a href="{% url 'freight:contract_list_all' %}" class="nav-link {% navactive request 'freight:contract_list_all' %}">
+            {% translate "All Contracts" %}&nbsp;
+            {% if pending_all_count > 0 %}
+                <span class="badge bg-secondary">{{ pending_all_count }}</span>
+            {% endif %}
+        </a>
+    </li>
+{% endif %}
+
+{% if perms.freight.view_statistics %}
+    <li class="nav-item">
+        <a href="{% url 'freight:statistics' %}" class="nav-link {% navactive request 'freight:statistics' %}">
+            {% translate "Statistics" %}
+        </a>
+    </li>
+{% endif %}
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+{% if perms.freight.add_location %}
+    <a class="btn btn-default navbar-btn" href="{% url 'freight:add_location' %}">
+        {% translate "Add Location" %}
+    </a>
+{% endif %}
+
+{% if perms.freight.setup_contract_handler %}
+    <a class="btn btn-default navbar-btn" href="{% url 'freight:setup_contract_handler' %}">
+        {{ setup_contract_handler_label }}
+    </a>
+{% endif %}
+</ul>

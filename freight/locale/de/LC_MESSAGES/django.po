@@ -1,0 +1,894 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Peter Pfeufer, 2023
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-16 17:01+0100\n"
+"PO-Revision-Date: 2023-05-13 14:51+0000\n"
+"Last-Translator: Peter Pfeufer, 2023\n"
+"Language-Team: German (https://app.transifex.com/kalkoken-apps/teams/107978/"
+"de/)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin.py:37 models/contract_handlers.py:92
+msgid "category"
+msgstr ""
+
+#: admin.py:41
+msgid "solar system"
+msgstr ""
+
+#: admin.py:45
+msgid "Update selected locations from ESI"
+msgstr "Ausgewählte Standorte von ESI aktualisieren"
+
+#: admin.py:56
+#, python-format
+msgid "Started updating %d locations. This can take a short while to complete."
+msgstr ""
+"Mit der Aktualisierung von %d Standorten begonnen. Dies kann eine kurze Zeit "
+"in Anspruch nehmen."
+
+#: admin.py:82
+msgid "bidirectional"
+msgstr ""
+
+#: admin.py:86
+msgid "active"
+msgstr ""
+
+#: admin.py:90
+msgid "default"
+msgstr ""
+
+#: admin.py:121
+msgid "sync ok"
+msgstr ""
+
+#: admin.py:125
+msgid "Fetch contracts from Eve Online server"
+msgstr "Verträge vom Eve Online-Server abrufen"
+
+#: admin.py:129
+#, python-format
+msgid "Started syncing contracts for: %s"
+msgstr ""
+
+#: admin.py:131
+msgid "Send notifications for outstanding contracts"
+msgstr "Benachrichtigungen für ausstehende Verträge senden"
+
+#: admin.py:136
+#, python-format
+msgid "Started sending notifications for: %s "
+msgstr "Mit dem Versenden von Benachrichtigungen begonnen für: %s"
+
+#: admin.py:139
+msgid "Update pricing info for all contracts"
+msgstr "Preisinformationen für alle Verträge aktualisieren"
+
+#: admin.py:183
+msgid "pilots notified"
+msgstr ""
+
+#: admin.py:189
+msgid "customer notified"
+msgstr ""
+
+#: admin.py:199
+msgid "Sent pilots notification for selected contracts to Discord"
+msgstr "Benachrichtigung für ausgewählte Verträge an Discord gesendet"
+
+#: admin.py:206
+#, python-format
+msgid "Sent pilots notification for contract %d to Discord"
+msgstr "Benachrichtigung für Vertrag %d an Discord gesendet"
+
+#: admin.py:211
+msgid "Sent customer notification for selected contracts to Discord"
+msgstr "Kundenbenachrichtigung für ausgewählte Verträge an Discord gesendet"
+
+#: admin.py:218
+#, python-format
+msgid "Sent customer notification for contract %d to Discord"
+msgstr "Kundenbenachrichtigung für Vertrag %d an Discord gesendet"
+
+#: app_settings.py:65
+msgid "My Alliance"
+msgstr ""
+
+#: app_settings.py:66
+msgid "My Corporation"
+msgstr ""
+
+#: app_settings.py:67
+msgid "Corporation in my Alliance"
+msgstr ""
+
+#: app_settings.py:68
+msgid "Corporation public"
+msgstr ""
+
+#: models/contract_handlers.py:89 models/routes.py:35
+msgid "id"
+msgstr ""
+
+#: models/contract_handlers.py:94 models/routes.py:48
+msgid "name"
+msgstr ""
+
+#: models/contract_handlers.py:169
+msgid "organization"
+msgstr ""
+
+#: models/contract_handlers.py:176
+msgid "character"
+msgstr ""
+
+#: models/contract_handlers.py:178
+msgid "Character used for syncing contracts"
+msgstr ""
+
+#: models/contract_handlers.py:183
+msgid "operation mode"
+msgstr ""
+
+#: models/contract_handlers.py:184
+msgid "Defines what kind of contracts are synced"
+msgstr ""
+
+#: models/contract_handlers.py:190
+msgid "price per volume modifier"
+msgstr ""
+
+#: models/contract_handlers.py:192
+msgid "Global modifier for price per volume in percent, e.g. 2.5 = +2.5%"
+msgstr ""
+
+#: models/contract_handlers.py:200
+msgid "version hash"
+msgstr ""
+
+#: models/contract_handlers.py:201
+msgid "hash to identify changes to contracts"
+msgstr ""
+
+#: models/contract_handlers.py:207
+msgid "last sync at"
+msgstr ""
+
+#: models/contract_handlers.py:208
+msgid "when the last sync happened"
+msgstr ""
+
+#: models/contract_handlers.py:217 models/contract_handlers.py:218
+msgid "contract handler"
+msgstr ""
+
+#: models/contracts.py:65
+msgid "outstanding"
+msgstr ""
+
+#: models/contracts.py:66
+msgid "in progress"
+msgstr ""
+
+#: models/contracts.py:67
+msgid "finished issuer"
+msgstr ""
+
+#: models/contracts.py:68
+msgid "finished contractor"
+msgstr ""
+
+#: models/contracts.py:69
+msgid "finished"
+msgstr ""
+
+#: models/contracts.py:70
+msgid "canceled"
+msgstr ""
+
+#: models/contracts.py:71
+msgid "rejected"
+msgstr ""
+
+#: models/contracts.py:72 templates/freight/partials/contracts_legend.html:18
+msgid "failed"
+msgstr ""
+
+#: models/contracts.py:73
+msgid "deleted"
+msgstr ""
+
+#: models/contracts.py:74
+msgid "reversed"
+msgstr ""
+
+#: models/contracts.py:101
+msgid "contract ID"
+msgstr ""
+
+#: models/contracts.py:109
+msgid "acceptor"
+msgstr ""
+
+#: models/contracts.py:111
+msgid "Character of acceptor or None if accepted by corp"
+msgstr ""
+
+#: models/contracts.py:119
+msgid "acceptor corporation"
+msgstr ""
+
+#: models/contracts.py:121
+msgid "Corporation of acceptor"
+msgstr ""
+
+#: models/contracts.py:123
+msgid "collateral"
+msgstr ""
+
+#: models/contracts.py:128
+msgid "date accepted"
+msgstr ""
+
+#: models/contracts.py:134
+msgid "date completed"
+msgstr ""
+
+#: models/contracts.py:136
+msgid "date expired"
+msgstr ""
+
+#: models/contracts.py:138
+msgid "date issues"
+msgstr ""
+
+#: models/contracts.py:145 models/contracts.py:584
+msgid "date notified"
+msgstr ""
+
+#: models/contracts.py:146
+msgid "Datetime of latest notification, None = none has been sent"
+msgstr ""
+
+#: models/contracts.py:149 models/routes.py:138
+msgid "days to complete"
+msgstr ""
+
+#: models/contracts.py:154 models/routes.py:104
+msgid "end location"
+msgstr ""
+
+#: models/contracts.py:157
+msgid "for corporation"
+msgstr ""
+
+#: models/contracts.py:161
+msgid "issuer corporation"
+msgstr ""
+
+#: models/contracts.py:167
+msgid "issuer"
+msgstr ""
+
+#: models/contracts.py:174
+msgid "issues"
+msgstr ""
+
+#: models/contracts.py:175
+msgid "List or price check issues as JSON array of strings or None"
+msgstr ""
+
+#: models/contracts.py:183 models/routes.py:227
+msgid "pricing"
+msgstr ""
+
+#: models/contracts.py:186
+msgid "reward"
+msgstr ""
+
+#: models/contracts.py:190 models/routes.py:97
+msgid "start location"
+msgstr ""
+
+#: models/contracts.py:197 models/contracts.py:581
+msgid "status"
+msgstr ""
+
+#: models/contracts.py:204
+msgid "title"
+msgstr ""
+
+#: models/contracts.py:206
+msgid "volume"
+msgstr ""
+
+#: models/contracts.py:213 models/contracts.py:574
+msgid "contract"
+msgstr ""
+
+#: models/contracts.py:214
+msgid "contracts"
+msgstr ""
+
+#: models/contracts.py:589
+msgid "contract customer notification"
+msgstr ""
+
+#: models/contracts.py:590
+msgid "contract customer notifications"
+msgstr ""
+
+#: models/routes.py:61
+msgid "location"
+msgstr ""
+
+#: models/routes.py:62
+msgid "locations"
+msgstr ""
+
+#: models/routes.py:99
+msgid "Starting station or structure for courier route"
+msgstr ""
+
+#: models/routes.py:106
+msgid "Destination station or structure for courier route"
+msgstr ""
+
+#: models/routes.py:114
+msgid "collateral minimum"
+msgstr ""
+
+#: models/routes.py:115
+msgid "Minimum required collateral in ISK"
+msgstr ""
+
+#: models/routes.py:122
+msgid "collateral maximum"
+msgstr ""
+
+#: models/routes.py:123
+msgid "Maximum allowed collateral in ISK"
+msgstr ""
+
+#: models/routes.py:130
+msgid "days to expire"
+msgstr ""
+
+#: models/routes.py:131
+msgid "Recommended days for contracts to expire"
+msgstr ""
+
+#: models/routes.py:139
+msgid "Recommended days for contract completion"
+msgstr ""
+
+#: models/routes.py:145
+msgid "details"
+msgstr ""
+
+#: models/routes.py:146
+msgid "Text with additional instructions for using this pricing"
+msgstr ""
+
+#: models/routes.py:150
+msgid "is active"
+msgstr ""
+
+#: models/routes.py:151
+msgid "Disabled pricings will not be used or shown"
+msgstr ""
+
+#: models/routes.py:155
+msgid "is default"
+msgstr ""
+
+#: models/routes.py:157
+msgid ""
+"The default pricing will be preselected in the calculator. Please make sure "
+"to only mark one pricing as default."
+msgstr ""
+
+#: models/routes.py:163
+msgid "is bidirectional"
+msgstr ""
+
+#: models/routes.py:165
+msgid ""
+"Whether this pricing is valid for contracts in either direction or only the "
+"one specified"
+msgstr ""
+
+#: models/routes.py:174
+msgid "price base"
+msgstr ""
+
+#: models/routes.py:175
+msgid "Base price in ISK"
+msgstr ""
+
+#: models/routes.py:182
+msgid "price minimum"
+msgstr ""
+
+#: models/routes.py:183
+msgid "Minimum total price in ISK"
+msgstr ""
+
+#: models/routes.py:190
+msgid "price markup from volume"
+msgstr ""
+
+#: models/routes.py:191
+msgid "Add-on price per m3 volume in ISK"
+msgstr ""
+
+#: models/routes.py:198
+msgid "price markup from collateral"
+msgstr ""
+
+#: models/routes.py:199
+msgid "Add-on price in percent of collateral"
+msgstr ""
+
+#: models/routes.py:206
+msgid "volume maximum"
+msgstr ""
+
+#: models/routes.py:207
+msgid "Maximum allowed volume in m3"
+msgstr ""
+
+#: models/routes.py:214
+msgid "volume minimum"
+msgstr ""
+
+#: models/routes.py:215
+msgid "Minimum allowed volume in m3"
+msgstr ""
+
+#: models/routes.py:219
+msgid "price per volume modifier enabled"
+msgstr ""
+
+#: models/routes.py:220
+msgid "Whether the global price per volume modifier is used"
+msgstr ""
+
+#: models/routes.py:228
+msgid "pricings"
+msgstr ""
+
+#: models/routes.py:254
+msgid "You must specify at least one price component"
+msgstr ""
+
+#: models/routes.py:267
+msgid ""
+"There already exists a bidirectional pricing for this route. Please set this "
+"pricing to non-bidirectional to save it. And after you must also set the "
+"other pricing to non-bidirectional."
+msgstr ""
+
+#: models/routes.py:284
+msgid ""
+"There already exists a non bidirectional pricing for this route. You need to "
+"mark this pricing as non-bidirectional too to continue."
+msgstr ""
+
+#: templates/freight/add_location.html:11 views.py:401
+msgid "Add / Update Location"
+msgstr "Standort hinzufügen/aktualisieren"
+
+#: templates/freight/add_location.html:14
+#, python-format
+msgid "Accessing structures with token from %(token_char_name)s"
+msgstr "Zugriff auf Strukturen mit Token von %(token_char_name)s"
+
+#: templates/freight/calculator.html:15
+msgid "Calculator"
+msgstr "Rechner"
+
+#: templates/freight/calculator.html:21
+msgid "Reward"
+msgstr "Prämie"
+
+#: templates/freight/calculator.html:24 templates/freight/calculator.html:75
+#: templates/freight/calculator.html:86 templates/freight/calculator.html:94
+#: templates/freight/calculator.html:124 templates/freight/calculator.html:132
+#: templates/freight/calculator.html:186 templates/freight/calculator.html:195
+msgid "ISK"
+msgstr "ISK"
+
+#: templates/freight/calculator.html:31
+msgid "Click To Calculate Reward!"
+msgstr "Klicken Sie hier, um die Prämie zu berechnen!"
+
+#: templates/freight/calculator.html:35 templates/freight/calculator.html:146
+msgid "Please define a pricing/route!"
+msgstr "Bitte legen Sie einen Preis/eine Route fest!"
+
+#: templates/freight/calculator.html:46
+msgid "Pricing details"
+msgstr "Preisdetails"
+
+#: templates/freight/calculator.html:54 templates/freight/calculator.html:62
+msgid "From / To:"
+msgstr "Von/Nach:"
+
+#: templates/freight/calculator.html:56
+msgid "From:"
+msgstr "Von:"
+
+#: templates/freight/calculator.html:64
+msgid "To:"
+msgstr "Nach:"
+
+#: templates/freight/calculator.html:68
+msgid "Both directions:"
+msgstr "Beide Richtungen:"
+
+#: templates/freight/calculator.html:73
+msgid "Minimum price:"
+msgstr "Minimaler Preis:"
+
+#: templates/freight/calculator.html:81
+msgid "Fix price:"
+msgstr "Festpreis:"
+
+#: templates/freight/calculator.html:83
+msgid "Base price:"
+msgstr "Grundpreis:"
+
+#: templates/freight/calculator.html:91
+msgid "Price add-on per m3:"
+msgstr "Aufpreis pro m3:"
+
+#: templates/freight/calculator.html:99
+msgid "Price add-on collateral:"
+msgstr "Preisaufschlag als Sicherheit:"
+
+#: templates/freight/calculator.html:105
+msgid "Min Volume:"
+msgstr "Mindestvolumen:"
+
+#: templates/freight/calculator.html:108 templates/freight/calculator.html:116
+#: templates/freight/calculator.html:220
+msgid "m3"
+msgstr "m3"
+
+#: templates/freight/calculator.html:113
+msgid "Max Volume:"
+msgstr "Maximales Volumen:"
+
+#: templates/freight/calculator.html:121
+msgid "Min. Collateral:"
+msgstr "Min. Sicherheit:"
+
+#: templates/freight/calculator.html:129
+msgid "Max. Collateral:"
+msgstr "Max. Sicherheit:"
+
+#: templates/freight/calculator.html:139
+msgid "Additional Instructions:"
+msgstr "Zusätzliche Anweisungen:"
+
+#: templates/freight/calculator.html:154
+msgid "Your contract"
+msgstr "Dein Vertrag"
+
+#: templates/freight/calculator.html:159
+msgid "Contract Type:"
+msgstr "Vertragstyp:"
+
+#: templates/freight/calculator.html:160
+msgid "Courier"
+msgstr "Kurier"
+
+#: templates/freight/calculator.html:162
+msgid "Availability:"
+msgstr "Verfügbarkeit:"
+
+#: templates/freight/calculator.html:165
+msgid "Location:"
+msgstr "Standort:"
+
+#: templates/freight/calculator.html:175
+msgid "Ship To:"
+msgstr "Versenden nach:"
+
+#: templates/freight/calculator.html:183
+msgid "Reward:"
+msgstr "Prämie:"
+
+#: templates/freight/calculator.html:192
+msgid "Collateral:"
+msgstr "Sicherheit:"
+
+#: templates/freight/calculator.html:202
+msgid "Expiration:"
+msgstr "Ablauf:"
+
+#: templates/freight/calculator.html:203
+msgid "days"
+msgstr "Tage"
+
+#: templates/freight/calculator.html:207
+msgid "Days to complete:"
+msgstr "Tage zum Abschließen:"
+
+#: templates/freight/calculator.html:217
+msgid "Volume:"
+msgstr "Volumen:"
+
+#: templates/freight/calculator.html:225
+msgid ""
+"Note that this route is bidirectional, so Location and Destination can be "
+"switched."
+msgstr ""
+"Beachte, dass diese Route bidirektional ist, daher können Standort und Ziel "
+"vertauscht werden."
+
+#: templates/freight/calculator.html:229
+msgid "No price calculated yet"
+msgstr "Noch kein Preis berechnet"
+
+#: templates/freight/contracts_all.html:12
+msgid "Active"
+msgstr "Aktiv"
+
+#: templates/freight/contracts_all.html:17
+msgid "All"
+msgstr "Alle"
+
+#: templates/freight/partials/contract_table.html:7
+msgid "Status"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:8
+msgid "Start"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:9
+msgid "Destination"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:10
+msgid "Reward ISK"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:11
+msgid "Collateral ISK"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:12
+msgid "Volume m3"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:13
+msgid "Contract Check"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:14
+msgid "Issued On"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:15
+msgid "Expires On"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:16
+msgid "Issued By"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:17
+msgid "Accepted On"
+msgstr ""
+
+#: templates/freight/partials/contract_table.html:18
+msgid "Accepted By"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:4
+msgid "Contract check:"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:5
+msgid "OK"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:6
+msgid "Errors"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:7
+msgid "If they are errors you find them in the tooltip of icon"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:8
+msgid "No contract check performed"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:11
+msgid "Notes:"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:13
+msgid "If icon is shown you can hover with the mouse over it to see the notes."
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:16
+msgid "Color code:"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:17
+msgid "In Progress"
+msgstr ""
+
+#: templates/freight/partials/contracts_legend.html:19
+msgid "completed"
+msgstr ""
+
+#: templates/freight/partials/menu.html:9
+msgid "Toggle navigation"
+msgstr "Navigation umschalten"
+
+#: templates/freight/partials/menu.html:21 views.py:253
+msgid "Reward Calculator"
+msgstr ""
+
+#: templates/freight/partials/menu.html:27
+msgid "My Contract"
+msgstr ""
+
+#: templates/freight/partials/menu.html:38 views.py:91
+msgid "All Contracts"
+msgstr ""
+
+#: templates/freight/partials/menu.html:49
+msgid "Statistics"
+msgstr ""
+
+#: templates/freight/partials/menu.html:58
+msgid "Add Location"
+msgstr ""
+
+#: templates/freight/statistics.html:12
+msgid "Routes"
+msgstr "Routen"
+
+#: templates/freight/statistics.html:17 templates/freight/statistics.html:51
+msgid "Pilots"
+msgstr "Piloten"
+
+#: templates/freight/statistics.html:26
+msgid "Pilot Corporations"
+msgstr "Piloten Corporationen"
+
+#: templates/freight/statistics.html:31 templates/freight/statistics.html:52
+msgid "Customers"
+msgstr "Kunden"
+
+#: templates/freight/statistics.html:46 templates/freight/statistics.html:77
+#: templates/freight/statistics.html:108 templates/freight/statistics.html:139
+msgid "Name"
+msgstr "Name"
+
+#: templates/freight/statistics.html:47 templates/freight/statistics.html:79
+#: templates/freight/statistics.html:110 templates/freight/statistics.html:141
+msgid "Contracts"
+msgstr "Verträge"
+
+#: templates/freight/statistics.html:48 templates/freight/statistics.html:80
+#: templates/freight/statistics.html:111 templates/freight/statistics.html:142
+msgid "Rewards"
+msgstr "Prämien"
+
+#: templates/freight/statistics.html:49 templates/freight/statistics.html:81
+#: templates/freight/statistics.html:112 templates/freight/statistics.html:143
+msgid "Collaterals"
+msgstr "Sicherheiten"
+
+#: templates/freight/statistics.html:50 templates/freight/statistics.html:82
+#: templates/freight/statistics.html:113 templates/freight/statistics.html:144
+msgid "Volume"
+msgstr "Volumen"
+
+#: templates/freight/statistics.html:58 templates/freight/statistics.html:88
+#: templates/freight/statistics.html:119 templates/freight/statistics.html:150
+msgid "Totals"
+msgstr "Gesamt"
+
+#: templates/freight/statistics.html:78 templates/freight/statistics.html:140
+msgid "Corporation"
+msgstr "Corporation"
+
+#: templates/freight/statistics.html:109
+msgid "Alliance"
+msgstr "Allianz"
+
+#: templates/freight/statistics.html:166
+#, python-format
+msgid ""
+"\n"
+"            Statistics calculated for all contracts finished withn the last "
+"%(max_days)s days\n"
+"        "
+msgstr ""
+"\n"
+"Statistiken für alle Verträge berechnet, die innerhalb der letzten "
+"%(max_days)s Tage abgeschlossen wurden"
+
+#: views.py:45
+msgid "Setup"
+msgstr ""
+
+#: views.py:77
+msgid "My Contracts"
+msgstr ""
+
+#: views.py:284
+#, python-format
+msgid ""
+"Can not setup contract handler, because %s is not a member of any alliance"
+msgstr ""
+"Der Vertragshandler kann nicht eingerichtet werden, da %s keiner Allianz "
+"angehört"
+
+#: views.py:301
+#, python-format
+msgid ""
+"You can only use your main or alt characters to setup the contract handler. "
+"However, character %s is neither. "
+msgstr ""
+"Du kannst zum Einrichten des Vertragshandlers nur Deinen Haupt- oder Alt-"
+"Charakter verwenden. Charakter %s ist jedoch weder das eine noch das andere."
+
+#: views.py:315
+msgid ""
+"There already is a contract handler installed for a different operation "
+"mode. You need to first delete the existing contract handler in the admin "
+"section before you can set up this app for a different operation mode."
+msgstr ""
+"Für einen anderen Betriebsmodus ist bereits ein Vertragshandler eingerichtet."
+"Du musst zunächst den vorhandenen Vertragshandler im Admin-Bereich löschen, "
+"bevor Du diese App für einen anderen Betriebsmodus einrichten kannst."
+
+#: views.py:339
+#, python-format
+msgid ""
+"Contract Handler setup started for %(organization)s organization with "
+"%(character)s as sync character. Operation mode: %(operation_mode)s. Started "
+"syncing of courier contracts. "
+msgstr ""
+
+#: views.py:387
+#, python-format
+msgid ""
+"Failed to add location with token from %(character)s for location ID %(id)s: "
+"%(error)s"
+msgstr ""
+"Der Standort konnte mit dem Token von %(character)s für die Standort-ID "
+"nicht hinzugefügt werden. %(id)s:%(error)s"
+
+#: views.py:397
+msgid "Added:"
+msgstr "Hinzugefügt:"
+
+#: views.py:397
+msgid "Updated:"
+msgstr "Aktualisiert:"

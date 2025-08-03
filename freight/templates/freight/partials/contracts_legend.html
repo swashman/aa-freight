@@ -1,0 +1,20 @@
+{% load i18n %}
+
+<p class="text-muted">
+    {% translate "Contract check:" %}
+    <span class="fas fa-check" aria-hidden="true"></span> {% translate "OK" %} |
+    <span class="fas fa-exclamation-triangle" aria-hidden="true"></span> {% translate "Errors" %} |
+    {% translate "If they are errors you find them in the tooltip of icon" %} |
+    <strong>-</strong> {% translate "No contract check performed" %}
+</p>
+<p class="text-muted">
+    {% translate "Notes:" %}
+    <span class="far fa-envelope" aria-hidden="true"></span>
+    {% translate "If icon is shown you can hover with the mouse over it to see the notes." %}
+</p>
+<p class="text-muted">
+    {% translate "Color code:" %}
+    <span class="text-info">{% translate "In Progress" %}</span> |
+    <span class="text-warning">{% translate "failed" %}</span> |
+    <span class="text-success">{% translate "completed" %}</span>
+</p>

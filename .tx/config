@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[o:kalkoken-apps:p:aa-freight:r:django-po]
+file_filter  = freight/locale/<lang>/LC_MESSAGES/django.po
+source_file  = freight/locale/en/LC_MESSAGES/django.po
+source_lang  = en_US
+type         = PO
+minimum_perc = 0
+lang_map     = zh_CN: zh_Hans, es_ES: es, de: de, ko_KR: ko
