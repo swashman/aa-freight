@@ -90,6 +90,14 @@ Configure your AA settings (`local.py`) as follows:
    }
    ```
 
+- To make calculator page public, add the following
+
+    ```python
+    APPS_WITH_PUBLIC_VIEWS = [
+        "freight",
+    ]
+    ```
+
 If you want to setup notifications for Discord you can now also add the required settings. Check out section **Settings** for details.
 
 ### 3a - Celery setup

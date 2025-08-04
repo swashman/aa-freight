@@ -38,110 +38,8 @@
                     {% endif %}
                 </div>
             </div>
+
             <div class="card my-3">
-                <div class="card-header">
-                    <h3 class="card-title">{% translate "Pricing details" %}</h3>
-                </div>
-                <div class="card-body" style="min-height: 100px;">
-                    {% if pricing %}
-                        {% if pricing.is_bidirectional %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "From / To:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.start_location }}</dd>
-                            </div>
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "From / To:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.end_location }}</dd>
-                            </div>
-                        {% else %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "From:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.start_location }}</dd>
-                            </div>
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "To:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.end_location }}</dd>
-                            </div>
-                        {% endif %}
-
-                        <div class="row mb-2">
-                            <dt class="col-sm-4">{% translate "Both directions:" %}</dt>
-                            <dd class="col-sm-8">{{ pricing.is_bidirectional|yesno }}</dd>
-                        </div>
-
-                        {% if pricing.price_min != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Minimum price:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.price_min|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing.price_base != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">
-                                    {% if pricing.is_fix_price %}{% translate "Fix price:" %}{% else %}{% translate "Base price:" %}{% endif %}
-                                </dt>
-                                <dd class="col-sm-8">{{ pricing.price_base|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing_price_per_volume_eff != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Price add-on per m3:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing_price_per_volume_eff|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing.price_per_collateral_percent != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Price add-on collateral:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.price_per_collateral_percent }} %</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing.volume_min != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Min Volume:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.volume_min|formatnumber:"0"|default_if_none:"-" }}&nbsp;{% translate "m3" %}</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing.volume_max != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Max Volume:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.volume_max|formatnumber:"0"|default_if_none:"-" }}&nbsp;{% translate "m3" %}</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing.collateral_min != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Min. Collateral:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.collateral_min|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing.collateral_max != None %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Max. Collateral:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.collateral_max|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
-                            </div>
-                        {% endif %}
-
-                        {% if pricing.details %}
-                            <div class="row mb-2">
-                                <dt class="col-sm-4">{% translate "Additional Instructions:" %}</dt>
-                                <dd class="col-sm-8">{{ pricing.details|linebreaks }}</dd>
-                            </div>
-                        {% endif %}
-                    {% else %}
-                        <p class="text-warning">{% translate "Please define a pricing/route!" %}</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{% translate "Your contract" %}</h3>
                 </div>
@@ -222,6 +120,95 @@
                         {% translate "Note that this route is bidirectional, so Location and Destination can be switched." %}
                     {% else %}
                         <p class="text-muted">{% translate "No price calculated yet" %}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{% translate "Pricing details" %}</h3>
+                </div>
+                <div class="card-body" style="min-height: 100px;">
+                    {% if pricing %}
+                        {% if pricing.is_bidirectional %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "From / To:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.start_location }}</dd>
+                            </div>
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "From / To:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.end_location }}</dd>
+                            </div>
+                        {% else %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "From:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.start_location }}</dd>
+                            </div>
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "To:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.end_location }}</dd>
+                            </div>
+                        {% endif %}
+
+                        <div class="row mb-2">
+                            <dt class="col-sm-3">{% translate "Both directions:" %}</dt>
+                            <dd class="col-sm-8">{{ pricing.is_bidirectional|yesno }}</dd>
+                        </div>
+
+                        {% if pricing.price_min != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "Minimum price:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.price_min|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.price_base != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">
+                                    {% if pricing.is_fix_price %}{% translate "Fix price:" %}{% else %}{% translate "Base price:" %}{% endif %}
+                                </dt>
+                                <dd class="col-sm-8">{{ pricing.price_base|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing_price_per_volume_eff != None and pricing.price_per_collateral_percent != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "Rate::" %}</dt>
+                                <dd class="col-sm-8">{{ pricing_price_per_volume_eff|formatnumber:"0" }}&nbsp;{% translate "ISK/m3 or " %}{{ pricing.price_per_collateral_percent }}&nbsp;{% translate "of collateral (whichever is higher) " %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.volume_min != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "Min Volume:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.volume_min|formatnumber:"0"|default_if_none:"-" }}&nbsp;{% translate "m3" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.volume_max != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "Max Volume:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.volume_max|formatnumber:"0"|default_if_none:"-" }}&nbsp;{% translate "m3" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.collateral_max != None %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-3">{% translate "Max. Collateral:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.collateral_max|formatnumber:"0" }}&nbsp;{% translate "ISK" %}</dd>
+                            </div>
+                        {% endif %}
+
+                        {% if pricing.details %}
+                            <div class="row mb-2">
+                                <dt class="col-sm-4">{% translate "Additional Instructions:" %}</dt>
+                                <dd class="col-sm-8">{{ pricing.details|linebreaks }}</dd>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <p class="text-warning">{% translate "Please define a pricing/route!" %}</p>
                     {% endif %}
                 </div>
             </div>

@@ -38,9 +38,12 @@ ADD_LOCATION_TOKEN_TAG = "freight_add_location_token"
 
 def add_common_context(request, context: dict) -> dict:
     """adds the common context used by all view"""
-    pending_user_count = (
-        Contract.objects.all().issued_by_user(request.user).pending_count()
-    )
+    if request.user.is_authenticated:
+        pending_user_count = (
+            Contract.objects.all().issued_by_user(request.user).pending_count()
+        )
+    else:
+        pending_user_count = 0
     my_mode = Freight.operation_mode_friendly(FREIGHT_OPERATION_MODE)
     setup_str = _("Setup")
     button_label = format_lazy(
@@ -206,8 +209,6 @@ def _fetch_pricing_infos(contract):
     return route_name, pricing_check
 
 
-@login_required
-@permission_required("freight.use_calculator")
 def calculator(request, pricing_pk=None):
     """Calculator view."""
     if request.method != "POST":

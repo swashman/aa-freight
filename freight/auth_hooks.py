@@ -37,4 +37,6 @@ def register_menu():
 
 @hooks.register("url_hook")
 def register_urls():
-    return UrlHook(urls, "freight", r"^freight/")
+    return UrlHook(
+        urls, "freight", r"^freight/", excluded_views=["freight.views.calculator"]
+    )

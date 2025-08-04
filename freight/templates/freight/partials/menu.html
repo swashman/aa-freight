@@ -2,13 +2,13 @@
 {% load i18n %}
 {% load navactive %}
 
-{% if perms.freight.use_calculator %}
+
     <li class="nav-item">
         <a href="{% url 'freight:calculator' %}" class="nav-link {% navactive request 'freight:calculator' %}">
             {% translate "Reward Calculator" %}
         </a>
     </li>
-
+{% if perms.freight.use_calculator %}
     <li class="nav-item">
         <a href="{% url 'freight:contract_list_user' %}" class="nav-link {% navactive request 'freight:contract_list_user' %}">
             {% translate "My Contract" %}s&nbsp;
