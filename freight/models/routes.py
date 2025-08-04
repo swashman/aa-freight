@@ -397,13 +397,11 @@ class Pricing(models.Model):
             else self.price_per_collateral_percent
         )
 
+        # we want to return the highest of the minimum, volume price, or collateral. instead of adding volume and colalteral
         return max(
             price_min,
-            (
-                price_base
-                + volume * price_per_volume
-                + collateral * (price_per_collateral_percent / 100)
-            ),
+            (price_base + volume * price_per_volume),
+            (price_base + collateral * (price_per_collateral_percent / 100)),
         )
 
     def get_contract_price_check_issues(
