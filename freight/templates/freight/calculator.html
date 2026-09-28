@@ -6,7 +6,7 @@
 {% load freight_filters %}
 
 {% block details %}
-    
+
 <form id="form_calculator" class="form" action="{% url 'freight:calculator' %}" method="POST">
     {% csrf_token %}
     <div class="row">
